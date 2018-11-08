@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html --public-url ./",
+    "publish": "npm run build && gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,7 @@
   "dependencies": {
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "gh-pages": "^2.0.1",
     "parcel-bundler": "^1.10.3",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"
