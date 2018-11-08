@@ -13,6 +13,10 @@ export default class BetManager {
     return this.deposit;
   }
 
+  public setDeposit(deposit: number) {
+    this.deposit = deposit;
+  }
+
   public getCurrentBet(): number {
     return this.currentBet;
   }
