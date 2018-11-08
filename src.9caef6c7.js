@@ -24002,6 +24002,10 @@ function () {
     return this.deposit;
   };
 
+  BetManager.prototype.setDeposit = function (deposit) {
+    this.deposit = deposit;
+  };
+
   BetManager.prototype.getCurrentBet = function () {
     return this.currentBet;
   };
@@ -24097,7 +24101,8 @@ function (_super) {
     _this.betManager = new BetManager_1["default"](100, 2);
     _this.state = {
       deposit: _this.betManager.getDeposit(),
-      currentBet: _this.betManager.getCurrentBet()
+      currentBet: _this.betManager.getCurrentBet(),
+      baseBet: _this.betManager.getBaseBet()
     };
     return _this;
   }
@@ -24112,15 +24117,36 @@ function (_super) {
     this.update();
   };
 
+  App.prototype.handleDepositChanged = function (event) {
+    var newDeposit = Number.parseInt(event.target.value);
+    this.betManager.setDeposit(newDeposit);
+    this.update();
+  };
+
+  App.prototype.handleBaseBetChanged = function (event) {
+    var newBaseBet = Number.parseInt(event.target.value);
+    this.betManager.setBaseBet(newBaseBet);
+    this.update();
+  };
+
   App.prototype.update = function () {
     this.setState({
       deposit: this.betManager.getDeposit(),
-      currentBet: this.betManager.getCurrentBet()
+      currentBet: this.betManager.getCurrentBet(),
+      baseBet: this.betManager.getBaseBet()
     });
   };
 
   App.prototype.render = function () {
-    return React.createElement("div", null, React.createElement("h1", null, "Deposit: ", this.state.deposit), React.createElement("h1", null, "Suggested Bet: ", this.state.currentBet), React.createElement("button", {
+    return React.createElement("div", null, React.createElement("div", null, "Deposit:", React.createElement("input", {
+      type: "number",
+      value: this.state.deposit,
+      onChange: this.handleDepositChanged.bind(this)
+    })), React.createElement("div", null, "Base Bet:", React.createElement("input", {
+      type: "number",
+      value: this.state.baseBet,
+      onChange: this.handleBaseBetChanged.bind(this)
+    })), React.createElement("p", null, "Suggested Bet: ", this.state.currentBet), React.createElement("button", {
       onClick: this.handleWon.bind(this)
     }, "Round Won"), React.createElement("button", {
       onClick: this.handleLost.bind(this)
@@ -24176,7 +24202,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40283" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
