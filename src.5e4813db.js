@@ -19,4 +19,4 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 },{"react":"1n8/","../core/BetManager":"4+d5"}],"+fUd":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};exports.__esModule=!0;var r=require("react"),t=require("react-dom"),u=e(require("../src/components/app"));t.render(r.createElement(u.default),document.getElementById("root"));
 },{"react":"1n8/","react-dom":"NKHc","../src/components/app":"FYKu"}]},{},["+fUd"], null)
-//# sourceMappingURL=/src.5e4813db.map
+//# sourceMappingURL=src.5e4813db.map
