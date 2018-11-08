@@ -1,0 +1,24 @@
+{
+  "name": "bet-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel build ./src/app.ts && node ./dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garritfra/bet-helper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garritfra/bet-helper/issues"
+  },
+  "homepage": "https://github.com/garritfra/bet-helper#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
+}
