@@ -35,6 +35,14 @@ export default class App extends React.Component<any, any> {
     this.update();
   }
 
+  handleBaseBetChanged(event: Event) {
+    const newBaseBet = Number.parseInt(
+      (event.target as HTMLInputElement).value
+    );
+    this.betManager.setBaseBet(newBaseBet);
+    this.update();
+  }
+
   update() {
     this.setState({
       deposit: this.betManager.getDeposit(),
@@ -46,15 +54,23 @@ export default class App extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <p>
-          <span>Deposit: </span>
+        <div>
+          Deposit:
           <input
             type="number"
-            defaultValue={this.state.deposit}
             value={this.state.deposit}
             onChange={this.handleDepositChanged.bind(this)}
           />
-        </p>
+        </div>
+
+        <div>
+          Base Bet:
+          <input
+            type="number"
+            value={this.state.baseBet}
+            onChange={this.handleBaseBetChanged.bind(this)}
+          />
+        </div>
         <p>Suggested Bet: {this.state.currentBet}</p>
         <button onClick={this.handleWon.bind(this)}>Round Won</button>
         <button onClick={this.handleLost.bind(this)}>Round Lost</button>
