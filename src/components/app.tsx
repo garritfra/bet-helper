@@ -1,6 +1,8 @@
 import * as React from "react";
 import BetManager from "../core/BetManager";
 
+import "../styles/app.scss";
+
 export default class App extends React.Component<any, any> {
   props: any;
   state: any;
@@ -53,27 +55,33 @@ export default class App extends React.Component<any, any> {
 
   render() {
     return (
-      <div>
-        <div>
-          Deposit:
+      <div id="app">
+        <div id="deposit" className="field">
+          <p>Deposit:</p>
           <input
             type="number"
             value={this.state.deposit}
             onChange={this.handleDepositChanged.bind(this)}
           />
         </div>
-
-        <div>
-          Base Bet:
+        <div id="base-bet" className="field">
+          <p>Base Bet:</p>
           <input
+            name="base bet"
             type="number"
             value={this.state.baseBet}
             onChange={this.handleBaseBetChanged.bind(this)}
           />
         </div>
-        <p>Suggested Bet: {this.state.currentBet}</p>
-        <button onClick={this.handleWon.bind(this)}>Round Won</button>
-        <button onClick={this.handleLost.bind(this)}>Round Lost</button>
+        <div id="suggested-bet" className="field">
+          Suggested Bet: {this.state.currentBet}
+        </div>
+        <button className="button won" onClick={this.handleWon.bind(this)}>
+          Round Won
+        </button>
+        <button className="button lost" onClick={this.handleLost.bind(this)}>
+          Round Lost
+        </button>
       </div>
     );
   }
