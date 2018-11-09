@@ -27,6 +27,7 @@ export default class BetManager {
 
   public setBaseBet(amount: number) {
     this.baseBet = amount;
+    this.currentBet = this.baseBet;
   }
 
   private resetBet(): number {

@@ -45,10 +45,19 @@ input {
 
 .button {
   font-size: 50px;
+  border: none;
+  outline: none;
+  transition-duration: 200ms;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.button:active {
+  transform: scale(0.95);
 }
 
 .won {
-  background-color: green;
+  background-color: #05af00;
   grid-area: button-won;
 }
 
