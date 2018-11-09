@@ -24218,14 +24218,14 @@ function (_super) {
     }, React.createElement("div", {
       id: "deposit",
       className: "field"
-    }, React.createElement("p", null, "Maximaler Einsatz:"), React.createElement("input", {
+    }, React.createElement("p", null, "Maximaler Einsatz (Geld in Tasche):"), React.createElement("input", {
       type: "number",
       value: this.state.deposit,
       onChange: this.handleDepositChanged.bind(this)
     })), React.createElement("div", {
       id: "base-bet",
       className: "field"
-    }, React.createElement("p", null, "Ersteinsatz:"), React.createElement("input", {
+    }, React.createElement("p", null, "Ersteinsatz (Kleiner Wert f\xFCr kleinstes Risiko):"), React.createElement("input", {
       name: "base bet",
       type: "number",
       value: this.state.baseBet,
@@ -24291,7 +24291,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56243" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56289" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
