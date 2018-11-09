@@ -57,7 +57,7 @@ export default class App extends React.Component<any, any> {
     return (
       <div id="app">
         <div id="deposit" className="field">
-          <p>Deposit:</p>
+          <p>Maximaler Einsatz:</p>
           <input
             type="number"
             value={this.state.deposit}
@@ -65,7 +65,7 @@ export default class App extends React.Component<any, any> {
           />
         </div>
         <div id="base-bet" className="field">
-          <p>Base Bet:</p>
+          <p>Ersteinsatz:</p>
           <input
             name="base bet"
             type="number"
@@ -74,13 +74,13 @@ export default class App extends React.Component<any, any> {
           />
         </div>
         <div id="suggested-bet" className="field">
-          Suggested Bet: {this.state.currentBet}
+          Vorgeschlagener Einsatz: {this.state.currentBet}
         </div>
         <button className="button won" onClick={this.handleWon.bind(this)}>
-          Round Won
+          Runde gewonnen
         </button>
         <button className="button lost" onClick={this.handleLost.bind(this)}>
-          Round Lost
+          Runde verloren
         </button>
       </div>
     );
