@@ -57,7 +57,7 @@ export default class App extends React.Component<any, any> {
     return (
       <div id="app">
         <div id="deposit" className="field">
-          <p>Maximaler Einsatz:</p>
+          <p>Maximaler Einsatz (Geld in Tasche):</p>
           <input
             type="number"
             value={this.state.deposit}
@@ -65,7 +65,7 @@ export default class App extends React.Component<any, any> {
           />
         </div>
         <div id="base-bet" className="field">
-          <p>Ersteinsatz:</p>
+          <p>Ersteinsatz (Kleiner Wert für kleinstes Risiko):</p>
           <input
             name="base bet"
             type="number"
