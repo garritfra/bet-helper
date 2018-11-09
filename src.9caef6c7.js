@@ -24038,7 +24038,79 @@ function () {
 }();
 
 exports["default"] = BetManager;
-},{}],"../src/components/app.tsx":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/styles/app.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/app.tsx":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -24089,6 +24161,8 @@ var React = __importStar(require("react"));
 
 var BetManager_1 = __importDefault(require("../core/BetManager"));
 
+require("../styles/app.scss");
+
 var App =
 /** @class */
 function (_super) {
@@ -24138,17 +24212,31 @@ function (_super) {
   };
 
   App.prototype.render = function () {
-    return React.createElement("div", null, React.createElement("div", null, "Deposit:", React.createElement("input", {
+    return React.createElement("div", {
+      id: "app"
+    }, React.createElement("div", {
+      id: "deposit",
+      className: "field"
+    }, React.createElement("p", null, "Deposit:"), React.createElement("input", {
       type: "number",
       value: this.state.deposit,
       onChange: this.handleDepositChanged.bind(this)
-    })), React.createElement("div", null, "Base Bet:", React.createElement("input", {
+    })), React.createElement("div", {
+      id: "base-bet",
+      className: "field"
+    }, React.createElement("p", null, "Base Bet:"), React.createElement("input", {
+      name: "base bet",
       type: "number",
       value: this.state.baseBet,
       onChange: this.handleBaseBetChanged.bind(this)
-    })), React.createElement("p", null, "Suggested Bet: ", this.state.currentBet), React.createElement("button", {
+    })), React.createElement("div", {
+      id: "suggested-bet",
+      className: "field"
+    }, "Suggested Bet: ", this.state.currentBet), React.createElement("button", {
+      className: "button won",
       onClick: this.handleWon.bind(this)
     }, "Round Won"), React.createElement("button", {
+      className: "button lost",
       onClick: this.handleLost.bind(this)
     }, "Round Lost"));
   };
@@ -24157,7 +24245,7 @@ function (_super) {
 }(React.Component);
 
 exports["default"] = App;
-},{"react":"../node_modules/react/index.js","../core/BetManager":"../src/core/BetManager.ts"}],"../src/index.ts":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../core/BetManager":"../src/core/BetManager.ts","../styles/app.scss":"../src/styles/app.scss"}],"../src/index.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -24202,7 +24290,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40283" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51118" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

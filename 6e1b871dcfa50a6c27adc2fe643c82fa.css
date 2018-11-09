@@ -1,0 +1,7 @@
+.app {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 20vw 80vw; }
+
+.won {
+  background-color: green; }
