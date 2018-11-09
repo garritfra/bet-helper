@@ -24218,14 +24218,14 @@ function (_super) {
     }, React.createElement("div", {
       id: "deposit",
       className: "field"
-    }, React.createElement("p", null, "Deposit:"), React.createElement("input", {
+    }, React.createElement("p", null, "Maximaler Einsatz:"), React.createElement("input", {
       type: "number",
       value: this.state.deposit,
       onChange: this.handleDepositChanged.bind(this)
     })), React.createElement("div", {
       id: "base-bet",
       className: "field"
-    }, React.createElement("p", null, "Base Bet:"), React.createElement("input", {
+    }, React.createElement("p", null, "Ersteinsatz:"), React.createElement("input", {
       name: "base bet",
       type: "number",
       value: this.state.baseBet,
@@ -24233,13 +24233,13 @@ function (_super) {
     })), React.createElement("div", {
       id: "suggested-bet",
       className: "field"
-    }, "Suggested Bet: ", this.state.currentBet), React.createElement("button", {
+    }, "Vorgeschlagener Einsatz: ", this.state.currentBet), React.createElement("button", {
       className: "button won",
       onClick: this.handleWon.bind(this)
-    }, "Round Won"), React.createElement("button", {
+    }, "Runde gewonnen"), React.createElement("button", {
       className: "button lost",
       onClick: this.handleLost.bind(this)
-    }, "Round Lost"));
+    }, "Runde verloren"));
   };
 
   return App;
@@ -24291,7 +24291,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55953" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56243" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
